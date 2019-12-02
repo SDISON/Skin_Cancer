@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Upload Progress Interaction</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'><link rel="stylesheet" href="{%static 'model/style.css'%}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+</head>
+<body>
+<form method='POST' enctype="multipart/form-data">
+	{% csrf_token %}
+        {%for field in form%}
+    <div id="button-wrapper2">
+        {%ifequal error 1%}
+        <div id="field">{{field.error}}</div>
+        {%endifequal%}
+        <div id="field">{{field}}</div>
+      </div>
+        {%endfor%}
+<!-- partial:index.partial.html -->
+<div id="button-wrapper">
+        <button type="submit">
+      <p>Upload Image</p>
+      <div class="fill"></div>
+      <div class="fa fa-check"></div>
+  </button>
+</div>
+</form>
+<!-- partial -->
+  <script src='https://codepen.io/balapa/pen/c58fffe58d661ae3d4b168a43eb3b2b8.js'></script><script  src="{%static 'model/script.js'%}"></script>
+
+</body>
+</html>
